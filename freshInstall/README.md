@@ -24,7 +24,8 @@
   > - Starting up with monitor, Enable SSH, Skip the remaining steps for internet setup and updates, change your hostname (**write it down somewhere to remember for first time ssh**) and password to something unique and shutdown your pihole.
  2. *Hardwire pi into router and begin updates*
   > - using something like putty `ssh pi@<yourhostname>.local` 
-  > - run update and upgrade `sudo apt-get update && sudo apt-get upgrade -y`
+  > - run update and upgrade 
+  > ``` sudo apt-get update && sudo apt-get upgrade -y```
   > - Reboot `sudo shutdown -r now` 
   > - ssh back into your pi
  2.  *Install Git*
@@ -40,7 +41,7 @@
 > - install, add root hints
 > - *Configure:* update pihole conf with the info provided in the link - 
 
-```bash 
+```sh 
 sudo nano /etc/unbound/unbound.conf.d/pi-hole.conf
 ```
 
