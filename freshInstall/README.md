@@ -25,7 +25,9 @@
  2. *Hardwire pi into router and begin updates*
   > - using something like putty `ssh pi@<yourhostname>.local` 
   > - run update and upgrade 
-  > ``` sudo apt-get update && sudo apt-get upgrade -y```
+  ``` 
+  sudo apt-get update && sudo apt-get upgrade -y
+  ```
   > - Reboot `sudo shutdown -r now` 
   > - ssh back into your pi
  2.  *Install Git*
