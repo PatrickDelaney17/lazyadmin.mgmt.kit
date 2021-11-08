@@ -136,3 +136,6 @@ echo ""
 
 ```
 
+
+```for i ... ; do sqlite3 my_db.sqlite "SELECT * FROM \"${i}\""; done```
+
