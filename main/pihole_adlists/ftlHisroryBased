@@ -1,0 +1,20 @@
+# Built of historical data collected from the FTL table
+# Started from - https://gist.githubusercontent.com/wassname/78eeaaad299dc4cddd04e372f20a9aa7/raw/d7863a978993e99d9c77c9001008ce670a3b4c29/LG%2520Smart-TV%2520Blocklist%2520Adlist%2520(for%2520PiHole)
+
+#LG SMART TV LIST 
+127.0.0.1 us.rdx2.lgtvsdp.com
+127.0.0.1 us.info.lgsmartad.com
+127.0.0.1 us.ibs.lgappstv.com
+# 127.0.0.1 us.lgtvsdp.com # BLOCKS APP Updates (potential security risk) 
+# 127.0.0.1 ngfts.lge.com # BLOCKS APP Updates (potential security risk) 
+127.0.0.1 ad.lgappstv.com
+127.0.0.1 smartshare.lgtvsdp.com
+127.0.0.1 ibis.lgappstv.com
+127.0.0.1 us.ad.lgsmartad.com
+127.0.0.1 lgad.cjpowercast.com.edgesuite.net
+127.0.0.1 yumenetworks.com
+127.0.0.1 smartclip.net
+127.0.0.1 smartclip.com
+
+# Start FTL History built list
+127.0.0.1 wo.vzwwo.com
