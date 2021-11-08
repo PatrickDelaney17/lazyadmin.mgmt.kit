@@ -5,15 +5,9 @@
 -  [output mode options](https://sqlite.org/cli.html)
 
 ```
-BEGIN;
- CREATE lazyadmin.db 
- COMMIT;
+# create db
+sqlite3 lazyadmin.db 
 
-BEGIN;
-    CREATE TABLE th_readings(id INTEGER PRIMARY KEY AUTOINCREMENT, temperature_data NUMERIC, humidity_data NUMERIC, current_date DATE, current_time TIME, device TEXT);
-COMMIT;
-
-INSERT INTO th_readings(temperature_data, humidity_data, current_date, current_time, device) VALUES (20.4, 44, date(‘now’), time(‘now’), “manual”);
 
 BEGIN;
     CREATE TABLE tblUserMsgSettings(id INTEGER PRIMARY KEY AUTOINCREMENT, lastModified DATE DEFAULT (datetime('now','localtime')), MsgTypeShortName NVARCHAR(5),MsgTypeColorCode NVARCHAR(10));
@@ -141,4 +135,7 @@ echo "$VAR"
 echo ""
 
 ```
+
+
+```for i ... ; do sqlite3 my_db.sqlite "SELECT * FROM \"${i}\""; done```
 

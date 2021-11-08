@@ -13,3 +13,7 @@ sqlite3 /home/pi/lazyadmin.db <<'END_SQL'
 SELECT * FROM tblMsgType;
 END_SQL
 echo ""
+
+`https://docs.pi-hole.net/database/ftl/#supported-status-types`
+
+sqlite3 "/etc/pihole/pihole-FTL.db" "SELECT domain,count(domain) FROM queries WHERE (STATUS == 4 OR STATUS == 5 OR STATUS == 11) GROUP BY domain ORDER BY count(domain) DESC LIMIT 10"
