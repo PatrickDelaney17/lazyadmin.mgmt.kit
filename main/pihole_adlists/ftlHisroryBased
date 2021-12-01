@@ -2,11 +2,15 @@
 # Started from - https://gist.githubusercontent.com/wassname/78eeaaad299dc4cddd04e372f20a9aa7/raw/d7863a978993e99d9c77c9001008ce670a3b4c29/LG%2520Smart-TV%2520Blocklist%2520Adlist%2520(for%2520PiHole)
 
 #LG SMART TV LIST 
+# Notes from usage
+# ngfts.lge.com # blocks thumbnails from loading in the LG Content Store
+# us.lgtvsdp.com # BLOCKS APP Updates (potential security risk) 
+# ngfts.lge.com # BLOCKS APP Updates (potential security risk) 
+#
+
 127.0.0.1 us.rdx2.lgtvsdp.com
 127.0.0.1 us.info.lgsmartad.com
 127.0.0.1 us.ibs.lgappstv.com
-# 127.0.0.1 us.lgtvsdp.com # BLOCKS APP Updates (potential security risk) 
-# 127.0.0.1 ngfts.lge.com # BLOCKS APP Updates (potential security risk) 
 127.0.0.1 ad.lgappstv.com
 127.0.0.1 smartshare.lgtvsdp.com
 127.0.0.1 ibis.lgappstv.com
@@ -15,6 +19,75 @@
 127.0.0.1 yumenetworks.com
 127.0.0.1 smartclip.net
 127.0.0.1 smartclip.com
+jp.rdx2.lgtvsdp.com
+jp.lgtvsdp.com
+jp.info.lgsmartad.com
+smartshare.lgtvsdp.com
+us.ibs.lgappstv.com
+us.info.lgsmartad.com
+us.lgtvsdp.com
+us.rdx2.lgtvsdp.com
+aic-ngfts.lge.com
+
 
 # Start FTL History built list
 127.0.0.1 wo.vzwwo.com
+
+# samsong tv
+#
+# notes
+# refs https://github.com/Perflyst/PiHoleBlocklist/blob/master/SmartTV.txt; https://gist.github.com/wassname/b594c63222f9e4c83ea23c818440901b
+#
+ad.samsungadhub.com
+ads.samsungads.com
+connecttv.pelmorex.com # weather app tracking
+oempprd.samsungcloudsolution.com
+oempprd.samsungcloudsolution.net
+www.samsungrm.net
+samsungelectronics.com
+apu.samsungelectronics.com
+bpu.samsungelectronics.com
+dpu.samsungelectronics.com
+kpu.samsungelectronics.com
+upu.samsungelectronics.com
+zpu.samsungelectronics.com
+xpu.samsungelectronics.com
+ypu.samsungelectronics.com
+vd.contents.prod.eu.s3.amazonaws.com
+log-ingestion-eu.samsungacr.com
+data.arqiva.tv
+cloud.arqiva.tv
+ad.samsungadhub.com
+ads.aimitv.com
+d37ju0xanoz6gh.cloudfront.net
+rd.samsungadhub.com
+samsungadhub.com
+samsungads.com
+gamespromotion.samsungcloudsolution.com
+
+# roku
+#
+# notes
+# refs https://github.com/Perflyst/PiHoleBlocklist/blob/master/SmartTV.txt; 
+#
+scribe.logs.roku.com
+midland.logs.roku.com
+austin.logs.roku.com
+cooper.logs.roku.com
+liberty.logs.roku.com
+display.ravm.tv
+ravm.tv
+
+# Netflix
+# secure, api-global, and appboot break Netflix
+#secure.netflix.com                   
+#api-global.netflix.com
+#appboot.netflix.com
+#nrdp.nccp.netflix.com # Netflix playback fails on Humax DTR-T2100 (YouView) STB
+ichnaea.netflix.com
+customerevents.netflix.com
+#nrdp.prod.ftl.netflix.com  # https://oisd.nl/excludes.php?w=nrdp.prod.ftl.netflix.com
+
+# Hulu
+api.distribution.hulu.com
+
