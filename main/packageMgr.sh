@@ -1,9 +1,12 @@
 #!/bin/bash
 
+start=`date +%s`
 GREEN="\033[1;32m"
 NOCOLOR="\033[0m"
 CYAN="\033[1;36m"
-
+d=$(date +%Y-%m-%d)
+ip=$(hostname -I | cut -d' ' -f1)
+logPath=~/$laLogPath
 
 basic_msg() {
 	for i in "$*"; do echo "$i"; done
@@ -15,7 +18,7 @@ green_msg() {
 	#if only one arg passed in
 	if [ -z "$MSG" ]
   	then
-    for i in "$*"; do echo -e "${GREEN} $i ${NOCOLOR}"; done	
+    for i in "$*"; do echo -e "${GREEN}$i ${NOCOLOR}"; done	
 	else
 	echo -e "Step $STEP: ${GREEN}${MSG}${NOCOLOR}";
 	fi	
@@ -32,7 +35,24 @@ echo
 echo	
 }
 
-#TODO: Add Version in script and version check pull
+calc_runtime()
+{
+  STARTTIME=$1
+  ENDTIME=$2 
+  let DURATION=${ENDTIME}-${STARTTIME} 
+  local SECONDS H M S MM H_TAG M_TAG S_TAG
+  SECONDS=$DURATION
+  let S=${SECONDS}%60
+  let MM=${SECONDS}/60 # Total number of minutes
+  let M=${MM}%60
+  let H=${MM}/60
+  info_msg "Script duration info"
+  next
+   # Display "01h02m03s" format
+   [ "$H" -gt "0" ] && printf "%02d%s" $H "h"
+   [ "$M" -gt "0" ] && printf "%02d%s" $M "m"    
+   printf "%02d%s\n" $S "s"
+}
 
 disk_spc() {
 	# Total available
@@ -81,7 +101,14 @@ else
 green_msg "JQ Version Installed: $HasJQ"
 fi
 }
-
+show_core_banner(){
+basic_msg "-----------------------------"
+basic_msg "Server hostname: $HOSTNAME"
+basic_msg "IP: $ip"
+green_msg "Date: $d"
+basic_msg "-----------------------------"
+next
+}
 
 # Check if updates are available
 check_pihole() {	
@@ -107,21 +134,20 @@ fi
 pihole_flush()
 {
 #TODO make log path param option 
-pihole -c -j > ~/Desktop/output.json
-MAX=10000
-info_msg "just writing domain stats info to temp file (output.json) and read it for now..."
+pihole -c -j > $logPath/dns_output.json
+MAX=12000
 info_msg "Flush if query count above $MAX"
-DNS_QUERIES=$(cat output.json | jq '.dns_queries_today')
+DNS_QUERIES=$(cat $logPath/dns_output.json | jq '.dns_queries_today')
 if [[ $MAX -lt $DNS_QUERIES ]]; then
 	info_msg "Flushing dns update gravity"
-	cat ~/Desktop/output.json | jq '.'
+	cat $logPath/dns_output.json | jq '.'
 	sudo pihole -g -f 
 	next
 else
 	info_msg "Flush not needed"
 fi
 info_msg "Display DNS Stats"
-cat output.json | jq '.'
+cat $logPath/dns_output.json | jq '.'
 }
 
 check_git() {	
@@ -152,12 +178,8 @@ pihole_mgmt()
 next
 green_msg "let's hope this works \_(\`.\`)_/"
 next
-ip=$(hostname -I)
-basic_msg "-----------------------------"
-basic_msg "Server hostname: $HOSTNAME"
-basic_msg "IP: $ip"
-basic_msg "-----------------------------"
-next
+
+show_core_banner
 info_msg "Pre-run check...Display server disk space, kill switch will engage if space if under 1gb"
 disk_spc
 next
@@ -179,19 +201,18 @@ green_msg 4 "run pihole management methods"
 next
 pihole_mgmt
 
-#echo "Temp log System rebooting -->  Today: ${d}" > templog.txt
-d=$(date +%Y-%m-%d)
-#TODO: convert to json
-##=('{"Today":"'$(date +%Y-%m-%d)'"}') --> output todays date within the brackets
+
 info_msg "Post run - Display Disk Space"
-basic_msg "-----------------------------"
-green_msg "$d"
-basic_msg "-----------------------------"
-echo
+show_core_banner
 df -h --total /root /dev
 echo
 basic_msg "-----------------------------"
 next 
-info_msg "Done - Rebooting Pi Server"
+end=`date +%s`
+calc_runtime $start $end
+next
+info_msg "Rebooting Pi Server"
+
+
 next
 sudo shutdown -r
