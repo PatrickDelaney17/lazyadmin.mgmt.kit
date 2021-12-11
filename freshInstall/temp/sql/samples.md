@@ -139,3 +139,11 @@ echo ""
 
 ```for i ... ; do sqlite3 my_db.sqlite "SELECT * FROM \"${i}\""; done```
 
+---
+ sudo apt install git build-essential cmake libuv1-dev libhwloc-dev -y
+git clone https://github.com/xmrig/xmrig.git
+cd xmrig
+mkdir build
+cd build
+cmake ..
+make
