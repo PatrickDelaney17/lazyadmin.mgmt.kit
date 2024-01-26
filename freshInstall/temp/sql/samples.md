@@ -138,4 +138,33 @@ echo ""
 
 
 ```for i ... ; do sqlite3 my_db.sqlite "SELECT * FROM \"${i}\""; done```
+start=`date +%s`
+logPath=~/$laLogPath
+d=$(date +%Y-%m-%d)
+end=`date +%s`
+
+localVersion=$(cat  $logPath/versionLog.json | jq '.commit')
+
+today=$d
+time_to_run=$(calc_runtime $start $end)
+hole=$(pihole -c -j)
+
+json=$( jq -n \
+                  --arg dt "$today" \
+                  --arg v $localVersion \
+                  --arg rt "$time_to_run" \
+                  -- dns "$hole"
+                  '{date: $dt, version: $v, scriptRunTime: $rt, dnsStats: [ $dns ]}' )
+echo $json
+
+hole=$(pihole -c -j)
+x='"piholeStats":['$hole
+x=$x']'
+jq -n --arg var "$x" '{$
+.0}'
+
+
+
+
+ 0                
 

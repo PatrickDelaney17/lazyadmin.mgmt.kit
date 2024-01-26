@@ -192,3 +192,10 @@ postrun_disk_space[""]
 echo '{"dns_stats":"[]"}' > test.json
 
  
+x=$(echo $hole | jq 'keys | .[]')
+
+for i in "${name[@]}"
+do
+	echo "$i "
+done
+
