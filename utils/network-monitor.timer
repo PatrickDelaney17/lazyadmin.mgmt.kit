@@ -1,0 +1,10 @@
+[Unit]
+Description=Run network-monitor.service every 15 minutes
+
+[Timer]
+OnBootSec=15m          # Start 15 minutes after boot
+OnUnitActiveSec=15m    # Repeat every 15 minutes
+Unit=network-monitor.service
+
+[Install]
+WantedBy=timers.target

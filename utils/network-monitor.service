@@ -1,0 +1,12 @@
+[Unit]
+Description=Monitor network and take recovery actions on failure
+After=network.target
+
+[Service]
+ExecStart=/opt/network-monitor/network-check.sh
+# Environment=FINAL_ACTION=reboot
+TimeoutStartSec=300
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
