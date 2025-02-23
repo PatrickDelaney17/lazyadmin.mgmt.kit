@@ -14,7 +14,7 @@ echo
 
 info_msg "Update Block List"
 next
-pihole --regex '^adtrack(er|ing)?[0-9]*[_.-]' '^track(ing)?[0-9]*[_.-]' '^(.+[_.-])?adse?rv(er?|ice)?s?[0-9]*[_.-]' '^stat(s|istics)?[0-9]*[_.-]' '^(.+[_.-])?telemetry[_.-]' '^analytics?[_.-]' 'yyjvimo' 'adclick' 'doubleclick' 'screencaps.vscdns.com' '^https://adssettings' '^https://googleleads' '(\.|^)criteo$' '(\.|^)ezoic$' '^advert(s|is(ing|ements?))?[0-9]*[_.-]' '^pixels?[-.]' '^count(ers?)?[0-9]*[_.-]' 'amgdgt' 'zamanta' 'taboola'
+pihole --regex '^adtrack(er|ing)?[0-9]*[_.-]' '^track(ing)?[0-9]*[_.-]' '^(.+[_.-])?adse?rv(er?|ice)?s?[0-9]*[_.-]' '^stat(s|istics)?[0-9]*[_.-]' '^(.+[_.-])?telemetry[_.-]' '^analytics?[_.-]' 'yyjvimo' 'adclick' 'doubleclick' 'screencaps.vscdns.com' '^https://adssettings' '^https://googleleads' '(\.|^)criteo$' '(\.|^)ezoic$' '^advert(s|is(ing|ements?))?[0-9]*[_.-]' '^pixels?[-.]' '^count(ers?)?[0-9]*[_.-]' '(\.|^)afcdn\.net$' '(\.|^)pushhub\.net$' '(\.|^)trkblue\.com$' '(\.|^)magsvr\.com$' '(\.|^)orbsvr\.com$' 'amgdgt' 'zamanta' 'taboola'
 next
 pihole -b 'wo.vzwwo.com' 'api.zynga.com' 'zoom.zynga.com' 'service.idsync.analytics.yahoo.com' 'app-measurement.com' 'mesu.g.aaplimg.com'
 next

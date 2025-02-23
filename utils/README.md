@@ -1,12 +1,14 @@
 # Utils 
 > Optional but may provide useful based on your needs.
 
+
 __Why use this?__
 This is a nice way to make sure workloads depending on network connectivity have it, if your network is undergoing updates that disconnect the device and it fails to establish back to the network on it's own, this script/service is intended to help fill that gap. In my case Pihole dns containers were not accessable after a few days with routine maintenance and a simple reconnect using the service was a gentle way to resolve the issue instead of a hard restart.
 
 __
 
 ## Network Checker Script
+DRAFT 
 
 ### steps
 

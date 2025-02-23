@@ -104,3 +104,9 @@ info_msg 'script complete, go to your pihole dashboard to confirm results'
 ```
     bash piholeDefaultList.sh
 ```
+
+# Additional Addlist
+> with minimal overlap with default pihole list
+* https://gitlab.com/hagezi/mirror/-/raw/main/dns-blocklists/adblock/popupads.txt
+* https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt
+* https://big.oisd.nl
